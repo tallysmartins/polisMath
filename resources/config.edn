@@ -9,7 +9,7 @@
 
  ;; TODO Oy vey; Need to fix this, or figure out if I even need it; if so may just in darwin?
  ;:primary-polis-url #or [#env PRIMARY_POLIS_URL
- ;                        :localhost]
+ ;                        :polis-server]
 
  :database {:pool-size #or [#long #env DATABASE_POOL_SIZE, 3]
             :url #env DATABASE_URL}

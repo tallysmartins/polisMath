@@ -65,7 +65,7 @@
 ;   * base-cluster-full [ptpt to base mpa]
 
 (def base-conv-update-graph
-  "Base of all conversation updates; handles default update opts and does named matrix updating"
+  "Base of all conversation updates; handles default  opts and does named matrix updating"
   {:opts'       (plmb/fnk [opts]
                   "Merge in opts with the following defaults"
                   ;; TODO Answer and resolve this question:
@@ -414,7 +414,9 @@
               (empty? votes))
        conv
        (do
-         (log/info (str "Starting conv-update for zid " zid ": N=" n-ptpts ", C=" n-cmts ", V=" (count votes)))
+         (log/info (str "============================================================================="))
+         (log/info (str "Starting conv-update for zid " zid ": N-ptpts=" n-ptpts ", n-cmts=" n-cmts ", VotesCount=" (count votes)))
+         (log/info (str "conv = " conv "options = " opts))
          (->
            ; dispatch to the appropriate function
            ((cond

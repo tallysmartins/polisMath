@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  mongo-server:
+    container_name: mongo-server
+    image: "mongo:3.0"
+    volumes:
+      - .:/code
+    ports:
+      - 27017:27017
+    environment:
+      - POSTGRES_USER=polis
+      - POSTGRES_PASSWORD=polis
+      - POSTGRES_DB=polisdb
+
+  polis-math:
+    container_name: polis-math
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - 3123:3123
+    depends_on:
+      - mongo-server
+    external_links:
+      - polisserver_default
+    networks:
+      - default
+      - polisserver_default
+    environment:
+      - DATABASE_URL=postgres://polis:polis@postgres:5432/polisdb
+      - DATABASE-URL=postgres://polis:polis@postgres:5432/polisdb
+
+networks:
+  polisserver_default:
+    external: true
+  
+
+
+

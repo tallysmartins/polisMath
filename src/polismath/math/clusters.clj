@@ -273,6 +273,8 @@
 (defn kmeans
   "Performs a k-means clustering."
   [data k & {:keys [last-clusters max-iters weights] :or {max-iters 20}}]
+  (log/info (str "clustering with k =" k " and max-iters = " max-iters))
+  (log/info (str "weights = " weights "last clusters = " last-clusters))
   (let [data-iter (utils/zip (nm/rownames data) (matrix/matrix (nm/get-matrix data)))
         clusters  (if last-clusters
                     (clean-start-clusters data last-clusters k :weights weights)

@@ -57,6 +57,10 @@
 
 (defn create-and-run-base-system!
   [config]
+  (print "Starting system")
   (create-and-run-system! base-system config))
 
-
+(defn tallys
+  [x]
+  (print "oh my f god")
+)

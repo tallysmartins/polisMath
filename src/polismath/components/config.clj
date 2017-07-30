@@ -34,7 +34,7 @@
    :darwin     {:server-port 3123}
    :export     {:expiry-days 10}
    ;; XXX Hmm... How do we express a dependency here? ; => Ah... this is exactly what aero solves!
-   :primary-polis-url :localhost ;; Must do it in the component load...
+   :primary-polis-url :polis-server ;; Must do it in the component load...
    :database   {:pool-size 3}
    :poller     {:votes {:polling-interval 2000}
                 :moderation {:polling-interval 5000}}

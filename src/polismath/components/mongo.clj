@@ -39,7 +39,7 @@
   [{:keys [config] :as mongo}]
   (merge mongo
          (if-let [mongo-url (-> config :mongo :url)]
-           (mg/connect-via-uri mongo-url)
+           (mg/connect-via-uri "mongodb://mongo")
            (let [conn (mg/connect)]
              {:conn conn :db (mg/get-db conn "local-db")}))))
 
@@ -110,6 +110,7 @@
 (defn zid-upsert
   "Perform upsert of new results on mongo collection name based on :zid of new-results"
   [mongo collection-name new-results]
+  (print new-results)
   (mc/update
     (:db mongo)
     collection-name
@@ -122,6 +123,7 @@
 (defn insert
   "Perform insert to mongo collection"
   [mongo collection-name object]
+  (print object)
   (mc/insert
     (:db mongo)
     collection-name
